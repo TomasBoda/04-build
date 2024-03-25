@@ -1,0 +1,218 @@
+Tomáš Boďa
+tominoboda@gmail.com 
+
+Deadline: 17.3.2024
+
+Requirements:
+- You do not have to procotol absolutely everything, such as 'cd' commands,
+  'rm -rf' when the task tells you to do a 'rm -rf', 'vim file', etc.
+- Include output of commands only when explicitly requested.
+- You can write answers in Czech.
+
+Useful links and help:
+  http://www.gnu.org/software/make/manual/
+
+
+-----
+Tasks
+-----
+
+0. The "mydb" directory contains implementation of a very simple database.
+   All source code files are in the "src" subdirectory.
+
+1. Write all necessary Makefiles for the "mydb" project.
+   Satisfy the following requirements:
+	- create one Makefile at the top level (project root) and one Makefile in the 'src' subdirectory
+		- for each target, the top-level Makefile should invoke the nested Makefile (in the 'src' directory) using the recommended approach
+		- the nested Makefile should contain the actual rules for compiling source code files, removing generated object files, and so on
+	- the full build process should create three binaries (programs): testadmin, testclient, testserver
+		- each binary program should be linked against the static library libmydb.a (see below)
+		- the binary programs 'testclient' and 'testadmin' will be also linked with the following libraries: libreadline, libhistory
+		- you can use a command similar to the following one to perform correct linking: gcc -o testclient -L. testclient.c client_comm.c -lmydb -lreadline -lhistory
+		- the binary program 'testclient' must be built from these source files: testclient.c, client_comm.c
+		- the binary program 'testserver' must be built from these source files: testserver.c, server_comm.c
+		- the binary program 'testadmin' must be built from these source files: testadmin.c
+	- the build process should also create the static library libmydb.a 
+		- the library must contain object files for all source files except those specific for the binary programs (see above)
+		- use the following command to create the library file libmydb.a: ar -rcvs libmydb.a <list of object files to be included>
+	- specify proper dependencies between object files, source files (.c), and binary programs
+	- specify dependencies on header files (.h) only for "data.c" (by looking into the source code)
+		- you do *not* have to specify dependencies on header files in the case of other source files, because there is too many of them
+	- other requirements on both Makefiles
+		- support the following targets
+			all -> compiles everything (i.e., the full build)
+			clean -> deletes all the generated files
+		- define and use built-in variables for compiler and flags
+			- variable CC with the value 'gcc'
+			- variable CFLAGS with the value '-g -Wall'
+			- set values of the variables in the top-level Makefile and tell Make to propagate the values to the Makefile in the 'src' subdirectory
+		- use features supported by Make to eliminate duplication (static pattern rules, implicit rules, variables, functions), but do not over-generalize at the expense of clarity
+ 		- targets that do not correspond to real files should be marked appropriately
+
+2. Test the Makefiles by executing "make" in the root directory of "mydb".
+   Ignore all the warnings printed by GCC. The source code is quite old and does not follow the recent standards of C, but it should compile anyway.
+   Paste the output of Make here.
+
+```
+tomasboda@Tomass-MacBook-Pro mydb % make
+/Library/Developer/CommandLineTools/usr/bin/make -C src testclient
+gcc -g -Wall -c testclient.c -o testclient.o
+gcc -g -Wall -c client_comm.c -o client_comm.o
+gcc -g -Wall -c btree_int.c -o btree_int.o
+gcc -g -Wall -c conds.c -o conds.o
+conds.c:523:21: warning: variable 'cnnod' is uninitialized when used here [-Wuninitialized]
+                        destroy_condnode(cnnod);
+                                         ^~~~~
+conds.c:514:21: note: initialize the variable 'cnnod' to silence this warning
+        st_cond_node *cnnod;
+                           ^
+                            = NULL
+1 warning generated.
+gcc -g -Wall -c config.c -o config.o
+gcc -g -Wall -c data.c -o data.o
+gcc -g -Wall -c db_engine.c -o db_engine.o
+db_engine.c:683:29: warning: variable 'prev' set but not used [-Wunused-but-set-variable]
+        st_result_tab *tab1,*tab2,*prev,*cur,*copy_head;
+                                   ^
+db_engine.c:1106:39: warning: variable 'cur2' set but not used [-Wunused-but-set-variable]
+        st_row_data *head,*cur,*prev,*head2,*cur2,*prev2;
+                                             ^
+db_engine.c:1234:6: warning: variable 'remove' set but not used [-Wunused-but-set-variable]
+        int remove;
+            ^
+3 warnings generated.
+gcc -g -Wall -c db_main.c -o db_main.o
+gcc -g -Wall -c error.c -o error.o
+gcc -g -Wall -c index.c -o index.o
+index.c:150:21: warning: variable 'cur' set but not used [-Wunused-but-set-variable]
+        st_block_no *head,*cur;
+                           ^
+index.c:151:6: warning: variable 'block' set but not used [-Wunused-but-set-variable]
+        int block;
+            ^
+index.c:254:6: warning: variable 'block' set but not used [-Wunused-but-set-variable]
+        int block;
+            ^
+index.c:255:24: warning: variable 'cur' set but not used [-Wunused-but-set-variable]
+    st_block_no *head,*cur;
+                       ^
+index.c:395:24: warning: variable 'cur' set but not used [-Wunused-but-set-variable]
+    st_block_no *head,*cur;
+                       ^
+index.c:427:7: warning: variable 'node2' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+                if (node->left_nghbr != (-1))
+                    ^~~~~~~~~~~~~~~~~~~~~~~~
+index.c:432:3: note: uninitialized use occurs here
+                node2->right_nghbr = -1;
+                ^~~~~
+index.c:427:3: note: remove the 'if' if its condition is always true
+                if (node->left_nghbr != (-1))
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+index.c:393:25: note: initialize the variable 'node2' to silence this warning
+    st_node *node,*node2;
+                        ^
+                         = NULL
+index.c:791:9: warning: variable 'cur' is uninitialized when used here [-Wuninitialized]
+                xfree(cur->value);
+                      ^~~
+index.c:777:19: note: initialize the variable 'cur' to silence this warning
+        st_index_row *cur;
+                         ^
+                          = NULL
+7 warnings generated.
+gcc -g -Wall -c memory.c -o memory.o
+gcc -g -Wall -c parser_commands.c -o parser_commands.o
+gcc -g -Wall -c parser_conds.c -o parser_conds.o
+gcc -g -Wall -c query.c -o query.o
+gcc -g -Wall -c result.c -o result.o
+gcc -g -Wall -c sql_parser.c -o sql_parser.o
+gcc -g -Wall -c strutil.c -o strutil.o
+gcc -g -Wall -c tabconf.c -o tabconf.o
+gcc -g -Wall -c tabdef.c -o tabdef.o
+gcc -g -Wall -c textfileio.c -o textfileio.o
+ar rcs libmydb.a btree_int.o conds.o config.o data.o db_engine.o db_main.o error.o index.o memory.o parser_commands.o parser_conds.o query.o result.o sql_parser.o strutil.o tabconf.o tabdef.o textfileio.o
+gcc -o testclient -L. testclient.o client_comm.o libmydb.a -lreadline -lmydb
+/Library/Developer/CommandLineTools/usr/bin/make -C src testserver
+gcc -g -Wall -c testserver.c -o testserver.o
+gcc -g -Wall -c server_comm.c -o server_comm.o
+server_comm.c:66:57: warning: incompatible pointer types passing 'size_t *' (aka 'unsigned long *') to parameter of type 'socklen_t *' (aka 'unsigned int *') [-Wincompatible-pointer-types]
+        new_sock = accept(sock,(struct sockaddr*)&clientname,&size);
+                                                             ^~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/socket.h:724:73: note: passing argument to parameter here
+int     accept(int, struct sockaddr * __restrict, socklen_t * __restrict)
+                                                                        ^
+1 warning generated.
+gcc -o testserver -L. testserver.o server_comm.o libmydb.a -lmydb
+/Library/Developer/CommandLineTools/usr/bin/make -C src testadmin
+gcc -g -Wall -c testadmin.c -o testadmin.o
+gcc -o testadmin -L. testadmin.o libmydb.a -lreadline -lmydb
+```
+
+3. Demonstrate that the dependencies work properly by invoking "make", "touch src/memory.h", "make", "touch src/testserver.c", "make". 
+   Paste the output of each command here.
+
+```
+tomasboda@Tomass-MacBook-Pro mydb % make (SAME AS ABOVE)
+tomasboda@Tomass-MacBook-Pro mydb % touch src/memory.h
+tomasboda@Tomass-MacBook-Pro mydb % make
+/Library/Developer/CommandLineTools/usr/bin/make -C src testclient
+make[1]: `testclient' is up to date.
+/Library/Developer/CommandLineTools/usr/bin/make -C src testserver
+make[1]: `testserver' is up to date.
+/Library/Developer/CommandLineTools/usr/bin/make -C src testadmin
+make[1]: `testadmin' is up to date.
+tomasboda@Tomass-MacBook-Pro mydb % touch src/testserver.c
+/Library/Developer/CommandLineTools/usr/bin/make -C src testclient
+make[1]: `testclient' is up to date.
+/Library/Developer/CommandLineTools/usr/bin/make -C src testserver
+gcc -g -Wall -c testserver.c -o testserver.o
+gcc -o testserver -L. testserver.o server_comm.o libmydb.a -lmydb
+/Library/Developer/CommandLineTools/usr/bin/make -C src testadmin
+make[1]: `testadmin' is up to date.
+```
+
+4. Send all the Makefiles together with the protocol in a single archive.
+   Do not include binaries, object files, and other temporary files generated during the build.
+
+
+-------
+Survey:
+-------
+
+We use the survey to evaluate the labs (tasks) and homework assignments.
+It is completely voluntary, but useful for future tuning of the content and level of complexity of the labs.
+Most questions can be answered using the scale from 1 to 10.
+Write your answer under the corresponding question.
+
+(1) How new was the topic and content of the lab for you?
+     (1 - brand new, 10 - I already knew everything)
+
+   5
+
+
+(2) Do you think that the content of this lab was useful?
+     (1 - useless or too trivial, 10 - very useful)
+
+   10
+
+
+(3) How do you evaluate the level of complexity of the homework assignment?
+     (1 - too trivial, 5-6 - just about right, 10 - too demanding or complex)
+
+   8
+
+
+(4) How do you evaluate your prior experience with the tool in the context of the homework assignment?
+     (1 - I already know and can use everything, 10 - I tried everything practically for the first time)
+
+   7
+
+
+(5) How much time (in minutes) did you spend working on the homework assignment?
+
+   120
+
+
+(6) Additional space for your own comments on the lab and homework assignment:
+
+
