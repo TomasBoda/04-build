@@ -1,0 +1,184 @@
+Tomáš Boďa
+tominoboda@gmail.com 
+
+MAVEN
+--------------------------------------------------------
+- build using "mvn clean install", output:
+
+tomasboda@Tomass-MacBook-Pro ftp % mvn clean install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.apache.ftpserver:ftp-server >-------------------
+[INFO] Building ftp-server 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ ftp-server ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ ftp-server ---
+[INFO] skip non existing resourceDirectory /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ ftp-server ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 139 source files to /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/target/classes
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/FtpConfigImpl.java: Some input files use or override a deprecated API.
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/FtpConfigImpl.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/gui/UserManagerPanel.java: Some input files use or override a deprecated API that is marked for removal.
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/gui/UserManagerPanel.java: Recompile with -Xlint:removal for details.
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/RequestHandler.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/RequestHandler.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ ftp-server ---
+[INFO] skip non existing resourceDirectory /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ ftp-server ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ ftp-server ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- jar:3.2.0:jar (default-jar) @ ftp-server ---
+[INFO] Building jar: /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/target/ftp-server-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.1:install (default-install) @ ftp-server ---
+[INFO] Installing /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/pom.xml to /Users/tomasboda/.m2/repository/org/apache/ftpserver/ftp-server/1.0-SNAPSHOT/ftp-server-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/target/ftp-server-1.0-SNAPSHOT.jar to /Users/tomasboda/.m2/repository/org/apache/ftpserver/ftp-server/1.0-SNAPSHOT/ftp-server-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.111 s
+[INFO] Finished at: 2024-04-06T18:46:04+02:00
+[INFO] ------------------------------------------------------------------------
+
+- create JAR file using "mvn clean package", output:
+
+tomasboda@Tomass-MacBook-Pro ftp % mvn clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.apache.ftpserver:ftp-server >-------------------
+[INFO] Building ftp-server 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ ftp-server ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ ftp-server ---
+[INFO] skip non existing resourceDirectory /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ ftp-server ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 139 source files to /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/target/classes
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/FtpConfigImpl.java: Some input files use or override a deprecated API.
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/FtpConfigImpl.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/gui/UserManagerPanel.java: Some input files use or override a deprecated API that is marked for removal.
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/gui/UserManagerPanel.java: Recompile with -Xlint:removal for details.
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/RequestHandler.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/org/apache/ftpserver/RequestHandler.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ ftp-server ---
+[INFO] skip non existing resourceDirectory /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ ftp-server ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ ftp-server ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- jar:3.2.0:jar (default-jar) @ ftp-server ---
+[INFO] Building jar: /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/target/ftp-server-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.052 s
+[INFO] Finished at: 2024-04-06T18:46:45+02:00
+[INFO] ------------------------------------------------------------------------
+
+- run/execute using "java -jar target/ftp-server-1.0-SNAPSHOT.jar", output:
+
+tomasboda@Tomass-MacBook-Pro ftp % java -jar target/ftp-server-1.0-SNAPSHOT.jar
+Usage: java org.apache.ftpserver.FtpServer <options>
+  <options> := -default |
+               -xml <XML configuration file> |
+               -prop <properties configuration file>
+
+There are three ways to start the FTP server.
+    -default :: default configuration will be used.
+    -xml     :: XML configuration will be used. User has to specify the file.
+    -prop    :: properties configuration will be used. User has to specify the file.
+
+- clean using "mvn clean", output:
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.apache.ftpserver:ftp-server >-------------------
+[INFO] Building ftp-server 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ ftp-server ---
+[INFO] Deleting /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-maven/ftp/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.173 s
+[INFO] Finished at: 2024-04-06T18:47:16+02:00
+[INFO] ------------------------------------------------------------------------
+
+CMAKE
+--------------------------------------------------------
+- build using "build.sh" script, output:
+
+tomasboda@Tomass-MacBook-Pro mydb % ./build.sh
+-- The C compiler identification is AppleClang 15.0.0.15000040
+-- The CXX compiler identification is AppleClang 15.0.0.15000040
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (7.5s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-cmake/mydb/build
+[  3%] Building C object src/CMakeFiles/mydb.dir/btree_int.c.o
+[  7%] Building C object src/CMakeFiles/mydb.dir/conds.c.o
+[ 11%] Building C object src/CMakeFiles/mydb.dir/config.c.o
+[ 14%] Building C object src/CMakeFiles/mydb.dir/data.c.o
+[ 18%] Building C object src/CMakeFiles/mydb.dir/db_engine.c.o
+[ 22%] Building C object src/CMakeFiles/mydb.dir/db_main.c.o
+[ 25%] Building C object src/CMakeFiles/mydb.dir/error.c.o
+[ 29%] Building C object src/CMakeFiles/mydb.dir/index.c.o
+[ 33%] Building C object src/CMakeFiles/mydb.dir/memory.c.o
+[ 37%] Building C object src/CMakeFiles/mydb.dir/parser_commands.c.o
+[ 40%] Building C object src/CMakeFiles/mydb.dir/parser_conds.c.o
+[ 44%] Building C object src/CMakeFiles/mydb.dir/query.c.o
+[ 48%] Building C object src/CMakeFiles/mydb.dir/result.c.o
+[ 51%] Building C object src/CMakeFiles/mydb.dir/sql_parser.c.o
+[ 55%] Building C object src/CMakeFiles/mydb.dir/strutil.c.o
+[ 59%] Building C object src/CMakeFiles/mydb.dir/tabconf.c.o
+[ 62%] Building C object src/CMakeFiles/mydb.dir/tabdef.c.o
+[ 66%] Building C object src/CMakeFiles/mydb.dir/textfileio.c.o
+[ 70%] Linking C static library libmydb.a
+[ 70%] Built target mydb
+[ 74%] Building C object src/CMakeFiles/testclient.dir/testclient.c.o
+[ 77%] Building C object src/CMakeFiles/testclient.dir/client_comm.c.o
+[ 81%] Linking C executable testclient
+[ 81%] Built target testclient
+[ 85%] Building C object src/CMakeFiles/testserver.dir/testserver.c.o
+[ 88%] Building C object src/CMakeFiles/testserver.dir/server_comm.c.o
+/Users/tomasboda/Desktop/DESKTOP/STUFF/School/SEMINARS/SUMMER/SOFTWARE DEVELOPMENT TOOLS/04-homework/04-cmake/mydb/src/server_comm.c:66:57: warning: incompatible pointer types passing 'size_t *' (aka 'unsigned long *') to parameter of type 'socklen_t *' (aka 'unsigned int *') [-Wincompatible-pointer-types]
+        new_sock = accept(sock,(struct sockaddr*)&clientname,&size);
+                                                             ^~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/sys/socket.h:724:73: note: passing argument to parameter here
+int     accept(int, struct sockaddr * __restrict, socklen_t * __restrict)
+                                                                        ^
+1 warning generated.
+[ 92%] Linking C executable testserver
+[ 92%] Built target testserver
+[ 96%] Building C object src/CMakeFiles/testadmin.dir/testadmin.c.o
+[100%] Linking C executable testadmin
+[100%] Built target testadmin
